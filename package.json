@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": " cross-env NODE_ENV=development nodemon --exec babel-node index.js",
+    "start": " babel-node index.js"
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,16 @@
   },
   "homepage": "https://github.com/kdany25/node_backend#readme",
   "dependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
     "dotenv": "^15.0.0",
     "express": "^4.17.2",
     "mongoose": "^6.1.10",
     "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/node": "^7.16.8",
+    "cross-env": "^7.0.3"
   }
 }
