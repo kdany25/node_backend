@@ -6,6 +6,7 @@ import userAuth from "./route/AuthRoute"
 import userRoute from "./route/UserRoute"
 import taskRoute from "./route/TaskRoute"
 import houseRoute from "./route/HouseRoute"
+import otherRoute from "./route/OtherRoute"
 
 const app = express();
 dotenv.config()
@@ -19,6 +20,7 @@ app.use("/api/auth", userAuth);
 app.use("/api/users", userRoute);
 app.use("/api/task", taskRoute);
 app.use("/api/house", houseRoute);
+app.use("/api/others", otherRoute);
 
 app.listen(6000,()=>{
     console.log('Backend server is running')
