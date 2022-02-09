@@ -5,12 +5,8 @@ import Health from "../models/Health";
 const router = express.Router();
 
 //NEW Patient
-router.post("/newActivity", async (req, res) => {
-  const newHealth = new Health({
-    desc: req.body.desc,
-    address: req.body.address,
-    sector: req.body.sector,
-  });
+router.post("/", async (req, res) => {
+  const newHealth = new Health( req.body);
 
   try {
     const patient = await newHealth.save();

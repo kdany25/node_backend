@@ -1,20 +1,16 @@
 import express from "express";
-import Task from "../models/Task";
+import Roads from "../models/Roads";
 
 
 const router = express.Router();
 
-//NEWTASK
-router.post("/newtask", async (req, res) => {
-  const newTask = new Task({
-    desc: req.body.desc,
-    target: req.body.target,
-    sector: req.body.sector,
-  });
+//NEW
+router.post("/", async (req, res) => {
+  const newaction = new Roads(req.body);
 
   try {
-    const savedTask = await newTask.save();
-    res.status(201).json(savedTask);
+    const saveAction = await newaction.save();
+    res.status(201).json(saveAction);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -22,8 +18,8 @@ router.post("/newtask", async (req, res) => {
  //delete
 router.delete("/:id", async (req, res) => {
     try {
-      await Task.findByIdAndDelete(req.params.id);
-      res.status(200).json("Task has been deleted...");
+      await Roads.findByIdAndDelete(req.params.id);
+      res.status(200).json("activity has been deleted...");
     } catch (err) {
       res.status(500).json(err);
     }
@@ -32,8 +28,8 @@ router.delete("/:id", async (req, res) => {
   //GET USER
 router.get("/:id", async (req, res) => {
     try {
-      const task = await Task.findById(req.params.id);
-      res.status(200).json(task);
+      const activity = await Roads.findById(req.params.id);
+      res.status(200).json(activity);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -43,11 +39,11 @@ router.get("/:id", async (req, res) => {
   router.get("/",  async (req, res) => {
     const query = req.query.new;
     try {
-      const tasks = query
-        ? await Task.find().sort({ _id: -1 }).limit(5)
-        : await Task.find();
+      const activity = query
+        ? await Roads.find().sort({ _id: -1 }).limit(5)
+        : await Roads.find();
        
-      res.status(200).json(tasks);
+      res.status(200).json(activity);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -57,14 +53,14 @@ router.get("/:id", async (req, res) => {
   router.put("/:id", async (req, res) => {
   
     try {
-      const updatedTask = await Task.findByIdAndUpdate(
+      const updatedActivity = await Roads.findByIdAndUpdate(
         req.params.id,
         {
           $set: req.body,
         },
         { new: true }
       );
-      res.status(200).json(updatedTask);
+      res.status(200).json(updatedActivity);
     } catch (err) {
       res.status(500).json(err);
     }
