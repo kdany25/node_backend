@@ -5,12 +5,8 @@ import House from "../models/House";
 const router = express.Router();
 
 //NEWHOUSE
-router.post("/newHouse", async (req, res) => {
-  const newHouse = new House({
-    desc: req.body.desc,
-    target: req.body.target,
-    sector: req.body.sector,
-  });
+router.post("/", async (req, res) => {
+  const newHouse = new House(req.body);
 
   try {
     const savedHouse = await newHouse.save();
