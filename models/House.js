@@ -6,11 +6,7 @@ const HouseSchema = new mongoose.Schema(
     address: { type: String, required: true },
     phone: { type: String, required: true },
     peopleInhouse: { type: String, required: true,},
-    newHouse: {
-      type: String,
-      enum: ["Renew", "NewHouse"],
-      required: true,
-    },
+    newHouse: { type: Boolean, default: true },
   },
   { timestamps: true }
 );
