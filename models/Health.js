@@ -8,12 +8,9 @@ const HealthSchema = new mongoose.Schema(
     age : { type: String, required: true,},
     desease: { type: String, required: true,},
     address : { type: String, required: true,},
-    hospitalised: {
-      type: String,
-      enum: ["TRUE", "FALSE"],
-      required: true,
+    hospitalised: { type: Boolean, default: true },
     },
-  },
+  
   { timestamps: true }
 );
 
