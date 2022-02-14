@@ -65,4 +65,42 @@ router.get("/:id", async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+
+  router.get("/week/patient",  async (req, res) => {
+    const date = new Date();
+    const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
+  
+    try {
+      const data = await House.aggregate([
+        { $match: { createdAt: { $gte: lastYear } } },
+        {
+          $project: {
+            week: { $week: "$createdAt" },
+          },
+        },
+          {$group: {_id: "$week", total: { $sum: 1 }}},
+          {$sort: {total: -1}}
+      ]);
+      res.status(200).json(data);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+
+
+  router.get("/count/all",  async (req, res) => {
+    House.count( {}, function(err, result){
+
+      if(err){
+          res.send(err)
+      }
+      else{
+          res.json(result)
+      }
+
+ })
+  })
+
 module.exports = router;

@@ -65,4 +65,83 @@ router.get("/:id", async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+
+  router.get("/week/patient",  async (req, res) => {
+    const date = new Date();
+    const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
+  
+    try {
+      const data = await Health.aggregate([
+        { $match: { createdAt: { $gte: lastYear } } },
+        {
+          $project: {
+            week: { $week: "$createdAt" },
+          },
+        },
+        {
+          $group: {
+            _id: "$week",
+            total: { $sum: 1 },
+          },
+        },
+      ]);
+      res.status(200).json(data);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+  router.get("/day/y",  async (req, res) => {
+    const date = new Date();
+    const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
+  
+    try {
+      const data = await Health.aggregate([
+        { $match: { createdAt: { $gte: lastYear } } },
+        {
+          $project: {
+            week: { $week: "$createdAt" },
+          },
+        },
+        {
+          $group: {
+            _id: "$week",
+            total: { $sum: 1 },
+          },
+        },
+      ]);
+      res.status(200).json(data);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+  router.get("/count/all",  async (req, res) => {
+    Health.count( {}, function(err, result){
+
+      if(err){
+          res.send(err)
+      }
+      else{
+          res.json(result)
+      }
+
+ })
+  })
+
+  router.get("/today/y",  async (req, res) => {
+    try {
+      const data = await Health.find({ 
+        "timestamp" : { 
+          $lt: new Date(), 
+          $gte: new Date(new Date().setDate(new Date().getDate()-1))
+        }   
+      })
+      res.status(200).json(data);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
 module.exports = router;
