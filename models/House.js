@@ -5,8 +5,10 @@ const HouseSchema = new mongoose.Schema(
     owner: { type: String, required: true },
     address: { type: String, required: true },
     phone: { type: String, required: true },
-    peopleInhouse: { type: String, required: true,},
-    newHouse: { type: Boolean, default: true },
+    email: { type: String, required: true }, 
+    cost: { type: String, required: true },
+  
+    
   },
   { timestamps: true }
 );
