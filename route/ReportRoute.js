@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     try {
       await Report.findByIdAndDelete(req.params.id);
-      res.status(200).json("Report has been deleted...");
+      res.status(200).json("Report has beeen deleted...");
     } catch (err) {
       res.status(500).json(err);
     }

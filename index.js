@@ -7,6 +7,11 @@ import userRoute from "./route/UserRoute"
 import houseRoute from "./route/HouseRoute"
 import RoadRoute from "./route/RoadRoute"
 import HealthRoute from "./route/HealthRoute"
+import HealthPlanRoute from "./route/HealthPlanRouteRoute"
+import RoadsPlanRoute from "./route/RoadsPlanRouteRoute"
+import HousePlanRoute from "./route/HousePlanRouteRoute"
+import Report
+ from "./route/ReportRoute"
 import cors from "cors"
 
 const app = express();
