@@ -16,7 +16,7 @@ import cors from "cors"
 
 const app = express();
 dotenv.config()
-
+const PORT = process.env.PORT || 5000;
 Mongoose.connect(process.env.MONGO_URL)
 .then(()=> console.log("DBconnection successfull")).catch((err)=>{console.log(err)});
 
@@ -28,6 +28,6 @@ app.use("/api/house", houseRoute);
 app.use("/api/roads", RoadRoute);
 app.use("/api/Health", HealthRoute);
 
-app.listen(5000,()=>{
-    console.log('Backend server is running')
-})
+app.listen(PORT, () => {
+    console.log(" backend started ");
+  });
