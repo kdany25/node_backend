@@ -8,6 +8,7 @@ const RoadPlanSchema = new mongoose.Schema(
     period: { type: String, required: true },
     engineer: { type: String, required: true },
     cost: { type: String, required: true },
+    priority: { type: Number, required: true },
   },
   { timestamps: true }
 );

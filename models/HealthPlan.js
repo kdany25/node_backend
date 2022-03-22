@@ -9,6 +9,7 @@ const HealthPlanSchema = new mongoose.Schema(
     period : { type: String, required: true,},
     doctor : { type: String, required: true,},
     cost : { type: String, required: true,},
+    priority: { type: Number, required: true },
     },
   
   { timestamps: true }
