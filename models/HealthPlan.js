@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const HealthPlanSchema = new mongoose.Schema(
   {
     
-    location: { type: Number, required: true },
+    location: { type: String, required: true },
     number: { type: Number, required: true },
     desease: { type: String, required: true,},
     period : { type: String, required: true,},
