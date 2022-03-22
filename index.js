@@ -27,6 +27,10 @@ app.use("/api/users", userRoute);
 app.use("/api/house", houseRoute);
 app.use("/api/roads", RoadRoute);
 app.use("/api/Health", HealthRoute);
+app.use("/api/HealthPlan", HealthPlanRoute);
+app.use("/api/RoadsPlan", RoadsPlanRoute);
+app.use("/api/HousePlan", HousePlanRoute);
+app.use("/api/Report", Report);
 
 app.listen(PORT, () => {
     console.log(" backend started ");
