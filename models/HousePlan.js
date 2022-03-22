@@ -6,6 +6,7 @@ const HousePlanSchema = new mongoose.Schema(
     number: { type: String, required: true },
     period: { type: String, required: true },
     cost: { type: String, required: true },
+    priority: { type: Number, required: true },
   },
   { timestamps: true }
 );
