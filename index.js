@@ -16,7 +16,7 @@ import cors from "cors"
 
 const app = express();
 dotenv.config()
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
 Mongoose.connect(process.env.MONGO_URL)
 .then(()=> console.log("DBconnection successfull"))
