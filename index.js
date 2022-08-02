@@ -38,5 +38,5 @@ app.use("/api/Report", Report);
 app.use("/api/Report", Report);
 
 app.listen(PORT, () => {
-    console.log(" military outReach backend has started ");
+    console.log(" military outReach backend  started ");
   });
