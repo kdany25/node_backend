@@ -19,7 +19,7 @@ dotenv.config()
 const PORT = process.env.PORT || 3001;
 
 Mongoose.connect(process.env.MONGO_URL)
-.then(()=> console.log("DBconnection successfull"))
+.then(()=> console.log("DataBase connection successfull"))
 .catch((err)=>{console.log(err)});
 
 app.use(cors());
